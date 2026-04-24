@@ -9,7 +9,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -47,7 +47,7 @@ html { scroll-behavior: auto; } /* Lenis handles this */
 body {
   background: var(--ink);
   color: var(--white);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Outfit', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -154,7 +154,7 @@ nav.nav--scrolled {
 }
 .nav__logo {
   display: flex; align-items: center; gap: 14px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 2.5px;
@@ -172,7 +172,7 @@ nav.nav--scrolled {
 .nav__links a { transition: color 0.3s; }
 .nav__links a:hover { color: var(--white); }
 .nav__cta {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 2px;
@@ -308,7 +308,7 @@ nav.nav--scrolled {
 .btn-primary {
   background: var(--amber);
   color: var(--ink);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 2.5px;
@@ -321,7 +321,7 @@ nav.nav--scrolled {
 }
 .btn-primary:hover { background: var(--cream); transform: translateY(-2px); }
 .btn-ghost {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -967,7 +967,7 @@ nav.nav--scrolled {
   width: 44px; height: 44px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 14px; font-weight: 700;
   color: var(--ink);
   background: linear-gradient(135deg, var(--amber), var(--gold));
@@ -1057,7 +1057,7 @@ nav.nav--scrolled {
 .tier__cta {
   display: inline-flex; align-items: center; gap: 8px;
   margin-top: 20px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 12px; font-weight: 600;
   letter-spacing: 1.5px; text-transform: uppercase;
   color: var(--amber);
@@ -1208,9 +1208,278 @@ footer {
   .gsap-reveal { opacity: 1; }
   .hero__title .line span { transform: none; }
 }
+
+/* ─────────────────────────────────────────
+   SCROLL PROGRESS BAR
+───────────────────────────────────────── */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--amber), var(--cream));
+  z-index: 10001;
+  transform-origin: left;
+  box-shadow: 0 0 8px rgba(229,180,83,0.6);
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────
+   SHOOTING STARS
+───────────────────────────────────────── */
+.shooting-star {
+  position: absolute;
+  pointer-events: none;
+  width: 120px; height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.9) 50%, rgba(229,180,83,0.4) 100%);
+  border-radius: 50%;
+  animation: shootAcross linear forwards;
+  opacity: 0;
+}
+@keyframes shootAcross {
+  0%   { opacity: 0; transform: translateX(0) translateY(0); }
+  5%   { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { opacity: 0; transform: translateX(350px) translateY(100px); }
+}
+
+/* ─────────────────────────────────────────
+   WHO IT'S FOR
+───────────────────────────────────────── */
+.who-section {
+  background: var(--navy);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.who__inner {
+  max-width: 1400px; margin: 0 auto;
+  padding: 140px 48px;
+}
+.who__header {
+  display: flex; align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 80px;
+  gap: 40px;
+}
+.who__label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--dim);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.who__label::before { content: '00'; color: var(--amber); }
+.who__heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 5.5vw, 80px);
+  font-weight: 800;
+  letter-spacing: -0.03em; line-height: 1;
+}
+.who__heading em { font-style: italic; color: var(--amber); }
+.who__subtitle {
+  max-width: 340px;
+  font-size: 16px; font-weight: 300;
+  color: var(--dim); line-height: 1.65;
+  flex-shrink: 0;
+}
+.who__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-left: 1px solid var(--border);
+}
+.who-card {
+  padding: 56px 44px;
+  border-right: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  position: relative; overflow: hidden;
+  transition: background 0.5s;
+  cursor: default;
+}
+.who-card:hover { background: var(--ghost); }
+.who-card__num {
+  font-family: 'Playfair Display', serif;
+  font-size: 96px; font-weight: 900;
+  color: rgba(255,255,255,0.025);
+  position: absolute; top: 20px; right: 24px;
+  line-height: 1;
+  pointer-events: none;
+  transition: color 0.5s, transform 0.6s var(--ease-out);
+}
+.who-card:hover .who-card__num { color: rgba(201,150,59,0.07); transform: scale(1.04); }
+.who-card__index {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--amber);
+  margin-bottom: 32px;
+}
+.who-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 800;
+  letter-spacing: -0.02em; line-height: 1.1;
+  margin-bottom: 20px;
+}
+.who-card p {
+  font-size: 15px; font-weight: 300;
+  color: var(--dim); line-height: 1.7;
+  margin-bottom: 36px;
+}
+.who-card__tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mist);
+  border: 1px solid rgba(122,171,220,0.25);
+  padding: 7px 14px; border-radius: 2px;
+}
+@media (max-width: 900px) {
+  .who__inner { padding: 100px 24px; }
+  .who__header { flex-direction: column; align-items: flex-start; }
+  .who__grid { grid-template-columns: 1fr; }
+  .who-card { padding: 44px 28px; }
+}
+
+/* ─────────────────────────────────────────
+   FAQ
+───────────────────────────────────────── */
+.faq-section {
+  background: var(--ink);
+  border-top: 1px solid var(--border);
+  padding: 160px 48px;
+}
+.faq__inner { max-width: 1000px; margin: 0 auto; }
+.faq__header { margin-bottom: 80px; }
+.faq__label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--dim);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.faq__label::before { content: '07'; color: var(--amber); }
+.faq__heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 800;
+  letter-spacing: -0.03em; line-height: 1.02;
+}
+.faq__heading em { font-style: italic; color: var(--amber); }
+.faq__list { display: flex; flex-direction: column; gap: 0; }
+.faq-item {
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-item__question {
+  width: 100%;
+  background: none; border: none;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px;
+  padding: 28px 0;
+  cursor: none;
+  text-align: left;
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px; font-weight: 600;
+  color: var(--white); letter-spacing: -0.01em;
+  transition: color 0.3s;
+}
+.faq-item__question:hover { color: var(--amber); }
+.faq-item__icon {
+  flex-shrink: 0;
+  transition: transform 0.4s var(--ease-out), stroke 0.3s;
+  color: var(--amber);
+}
+.faq-item.open .faq-item__icon { transform: rotate(180deg); }
+.faq-item__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease-out), padding 0.4s var(--ease-out);
+}
+.faq-item.open .faq-item__answer { max-height: 400px; padding-bottom: 28px; }
+.faq-item__answer p {
+  font-size: 16px; font-weight: 300;
+  color: var(--dim); line-height: 1.75;
+  max-width: 780px;
+}
+@media (max-width: 768px) {
+  .faq-section { padding: 100px 24px; }
+  .faq-item__question { font-size: 16px; padding: 22px 0; }
+}
+
+/* ─────────────────────────────────────────
+   COUNTER HIGHLIGHT
+───────────────────────────────────────── */
+.count-up {
+  display: inline-block;
+  position: relative;
+}
+.count-up::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--amber), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s var(--ease-out);
+}
+.count-up.counted::after { transform: scaleX(1); }
+
+/* ─────────────────────────────────────────
+   ENHANCED HOVER GLOWS
+───────────────────────────────────────── */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover::before { opacity: 1; }
+
+/* ─────────────────────────────────────────
+   FLOATING APPLY BUTTON (mobile)
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .float-apply {
+    position: fixed;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    z-index: 600;
+    background: var(--amber);
+    color: var(--ink);
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 16px 32px; border-radius: 2px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 8px 32px rgba(201,150,59,0.35);
+    transition: transform 0.5s var(--ease-spring), opacity 0.5s;
+    opacity: 0;
+    white-space: nowrap;
+  }
+  .float-apply.visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+@media (min-width: 769px) { .float-apply { display: none; } }
 </style>
 </head>
 <body>
+
+<!-- SCROLL PROGRESS -->
+<div id="progress-bar"></div>
+
+<!-- FLOATING APPLY (mobile) -->
+<a href="https://tally.so/r/wz5okg" target="_blank" rel="noopener" class="float-apply" id="floatApply">
+  Apply Now
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+</a>
 
 <!-- CURSOR -->
 <div id="cursor"></div>
@@ -1246,10 +1515,11 @@ footer {
     <span>Summit<span style="color:rgba(255,255,255,0.4);font-weight:300;letter-spacing:1px"> · </span>Sales</span>
   </a>
   <nav class="nav__links">
+    <a href="#who">Who</a>
     <a href="#program">Program</a>
     <a href="#events">Events</a>
     <a href="#community">Community</a>
-    <a href="#results">Results</a>
+    <a href="#faq">FAQ</a>
   </nav>
   <a href="https://tally.so/r/wz5okg" target="_blank" rel="noopener" class="nav__cta">
     Register
@@ -1481,6 +1751,42 @@ footer {
   </div>
 </div>
 
+<!-- WHO IT'S FOR -->
+<section class="who-section" id="who">
+  <div class="who__inner">
+    <div class="who__header">
+      <div>
+        <div class="who__label">Who it's for</div>
+        <h2 class="who__heading gsap-reveal">Built for the <em>hungry</em> ones.</h2>
+      </div>
+      <p class="who__subtitle gsap-reveal">Three types of people walk through our doors. All three leave with something they didn't have before.</p>
+    </div>
+    <div class="who__grid">
+      <div class="who-card gsap-reveal">
+        <div class="who-card__num">01</div>
+        <div class="who-card__index">Profile 01</div>
+        <h3>The Job Seeker</h3>
+        <p>Tired of rejection emails. You want a skill that pays immediately — not another degree that takes years to materialise.</p>
+        <div class="who-card__tag">0–12 months experience</div>
+      </div>
+      <div class="who-card gsap-reveal">
+        <div class="who-card__num">02</div>
+        <div class="who-card__index">Profile 02</div>
+        <h3>The Career Switcher</h3>
+        <p>You're good at talking to people. You've always known sales could change your life. You just needed the room to prove it.</p>
+        <div class="who-card__tag">Any background</div>
+      </div>
+      <div class="who-card gsap-reveal">
+        <div class="who-card__num">03</div>
+        <div class="who-card__index">Profile 03</div>
+        <h3>The Ambitious Rep</h3>
+        <p>Already in sales but stuck at the same number. You need a network, a sharper system, and a next level that actually exists.</p>
+        <div class="who-card__tag">1–3 years in sales</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- INTRO -->
 <section class="intro" id="about">
   <div class="intro__left">
@@ -1495,15 +1801,15 @@ footer {
     </p>
     <div class="intro__stats">
       <div class="intro__stat gsap-reveal">
-        <div class="intro__stat-num">200+</div>
+        <div class="intro__stat-num count-up" data-target="200" data-suffix="+">200+</div>
         <div class="intro__stat-label">Students Trained</div>
       </div>
       <div class="intro__stat gsap-reveal">
-        <div class="intro__stat-num">90</div>
+        <div class="intro__stat-num count-up" data-target="90" data-suffix="">90</div>
         <div class="intro__stat-label">Day Transformation</div>
       </div>
       <div class="intro__stat gsap-reveal">
-        <div class="intro__stat-num">5</div>
+        <div class="intro__stat-num count-up" data-target="5" data-suffix="">5</div>
         <div class="intro__stat-label">SA Cities Active</div>
       </div>
       <div class="intro__stat gsap-reveal">
@@ -1777,6 +2083,79 @@ footer {
         <iframe src="https://www.youtube.com/embed/qxU35nW3FBo" title="Summit Sales Stories" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <p class="video-caption">From the classroom to the closing call — real stories from real Summit students.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="faq__inner">
+    <div class="faq__header">
+      <div class="faq__label">Questions</div>
+      <h2 class="faq__heading gsap-reveal">Everything you <em>want to know.</em></h2>
+    </div>
+    <div class="faq__list">
+
+      <div class="faq-item">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>What does the 90-day program actually cost?</span>
+          <svg class="faq-item__icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-item__answer">
+          <p>The program investment varies based on your tier and intake. The Inner Circle membership starts at an accessible monthly rate designed for South Africans building their career. Book a discovery call and we'll walk you through the exact numbers — no hidden fees, no surprise charges.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>Do I need previous sales experience to join?</span>
+          <svg class="faq-item__icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-item__answer">
+          <p>No. Our most successful students often come in with zero sales experience. What matters is hunger, coachability, and a commitment to the 90 days. The program is built to take you from zero to closing — the methodology works regardless of your starting point.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>Is this online or in-person?</span>
+          <svg class="faq-item__icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-item__answer">
+          <p>Both. Summit runs live events in Johannesburg, Cape Town, Durban, Pretoria and Port Elizabeth. The core program and community are delivered online through our Skool platform, meaning you can train from anywhere in South Africa while still accessing the in-person network.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>What's the placement guarantee?</span>
+          <svg class="faq-item__icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-item__answer">
+          <p>Inner Circle members get priority access to our vetted hiring network. We've placed 200+ students directly with companies across South Africa. We don't guarantee a specific salary — we guarantee access to the network, the training, and the mentorship that makes placement possible. The work is still yours to do.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>How much can I realistically earn after the program?</span>
+          <svg class="faq-item__icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-item__answer">
+          <p>Students who complete the program and engage with the placement network typically start at R15,000–R35,000 per month, with commission structures that can take that significantly higher. Our top performers have reported R80,000+ months within 3–6 months of placement. Results depend on your effort, your role, and your sector.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>When is the next intake?</span>
+          <svg class="faq-item__icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-item__answer">
+          <p>We run intakes every quarter. The next cohort opens in May 2025. Spots are limited and fill quickly — register via the form above to secure your place and get full intake details sent directly to you.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2123,6 +2502,150 @@ if (LenisClass && lenis.on) {
   lenis.on('scroll', ScrollTrigger.update);
 }
 ScrollTrigger.refresh();
+
+// ─── SCROLL PROGRESS BAR ─────────────────
+(function() {
+  const bar = document.getElementById('progress-bar');
+  function updateBar() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docH > 0 ? (scrollTop / docH) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateBar, { passive: true });
+  if (LenisClass && lenis.on) lenis.on('scroll', updateBar);
+  updateBar();
+})();
+
+// ─── SHOOTING STARS ──────────────────────
+(function spawnShootingStars() {
+  const container = document.getElementById('stars');
+  function shoot() {
+    const star = document.createElement('div');
+    star.className = 'shooting-star';
+    const startX = Math.random() * 80; // % from left
+    const startY = Math.random() * 50; // % from top
+    const dur    = 0.8 + Math.random() * 0.8;
+    const angle  = -(20 + Math.random() * 20); // degrees
+    Object.assign(star.style, {
+      left: startX + '%',
+      top:  startY + '%',
+      transform: `rotate(${angle}deg)`,
+      animationDuration: dur + 's',
+      animationDelay: '0s',
+    });
+    container.appendChild(star);
+    setTimeout(() => star.remove(), (dur + 0.1) * 1000);
+  }
+  // Random interval: every 3–8 seconds
+  function scheduleNext() {
+    const delay = 3000 + Math.random() * 5000;
+    setTimeout(() => { shoot(); scheduleNext(); }, delay);
+  }
+  // Initial burst of 2
+  setTimeout(shoot, 1800);
+  setTimeout(shoot, 3500);
+  scheduleNext();
+})();
+
+// ─── ANIMATED NUMBER COUNTERS ────────────
+(function initCounters() {
+  const counters = document.querySelectorAll('.count-up');
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+  counters.forEach(el => {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    let animated = false;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          observer.disconnect();
+          el.classList.add('counted');
+          const dur = 1600;
+          const start = performance.now();
+          function tick(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / dur, 1);
+            const value = Math.round(easeOut(progress) * target);
+            el.textContent = value + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    observer.observe(el);
+  });
+})();
+
+// ─── FAQ ACCORDION ───────────────────────
+(function initFAQ() {
+  document.querySelectorAll('.faq-item__question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-item__question').setAttribute('aria-expanded', 'false');
+      });
+
+      // Open clicked (unless it was already open)
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();
+
+// ─── FLOATING APPLY BUTTON (mobile) ──────
+(function initFloat() {
+  const floatBtn = document.getElementById('floatApply');
+  if (!floatBtn) return;
+  let shown = false;
+  function check() {
+    const scrolled = window.scrollY > window.innerHeight * 0.7;
+    if (scrolled && !shown) { shown = true; floatBtn.classList.add('visible'); }
+    else if (!scrolled && shown) { shown = false; floatBtn.classList.remove('visible'); }
+  }
+  window.addEventListener('scroll', check, { passive: true });
+})();
+
+// ─── WHO CARDS — 3D TILT ─────────────────
+document.querySelectorAll('.who-card').forEach(card => {
+  card.addEventListener('mousemove', function(e) {
+    const r = this.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width  - 0.5;
+    const y = (e.clientY - r.top)  / r.height - 0.5;
+    gsap.to(this, {
+      rotateY: x * 6, rotateX: -y * 4,
+      duration: 0.5, ease: 'power2.out',
+      transformPerspective: 800,
+      transformOrigin: 'center center',
+    });
+  });
+  card.addEventListener('mouseleave', function() {
+    gsap.to(this, { rotateY: 0, rotateX: 0, duration: 0.8, ease: 'elastic.out(1, 0.5)' });
+  });
+});
+
+// ─── WHO SECTION — STAGGER REVEAL ────────
+gsap.fromTo('.who-card', { opacity: 0, y: 50 }, {
+  opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out',
+  scrollTrigger: { trigger: '.who__grid', start: 'top 80%' }
+});
+
+// ─── FAQ ITEMS — STAGGER REVEAL ──────────
+gsap.fromTo('.faq-item', { opacity: 0, x: -20 }, {
+  opacity: 1, x: 0, duration: 0.6, stagger: 0.07, ease: 'power3.out',
+  scrollTrigger: { trigger: '.faq__list', start: 'top 82%' }
+});
 </script>
 </body>
 </html>
